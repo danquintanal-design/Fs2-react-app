@@ -1,27 +1,19 @@
-import { Link, Route, Router, Switch } from "wouter";
-import InboxPage from "./pages/inbox-page/InboxPage";
+import { Route, Router, Switch } from "wouter";
+import Register from "./pages/register/Register";
+import Login from "./pages/login/Login";
+import Home from "./pages/home/Home";
+import Menu from "./components/menu/menu";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "") || "";
 
 const App = () => (
   <Router base={base}>
-    <Link href="/users/1">Profile</Link>
-
-    <Route path="/about">About Us</Route>
-
-    {/* 
-      Routes below are matched exclusively -
-      the first matched route gets rendered
-    */}
+    <Menu />
     <Switch>
-      <Route path="/inbox" component={InboxPage} />
-
-      <Route path="/users/:name">
-        {(params) => <>Hello, {params.name}!</>}
-      </Route>
-
-      {/* Default route in a switch */}
-      <Route>404: No such page!</Route>
+      <Route path="/" component={Home} />
+      <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
+      <Route>404: Página no encontrada</Route>
     </Switch>
   </Router>
 );
