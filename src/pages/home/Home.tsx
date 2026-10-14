@@ -1,6 +1,10 @@
 import { Link } from "wouter";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const Home = () => {
+  // Integramos el hook del profesor para actualizar el título de la pestaña
+  useDocumentTitle("PetSitter - Home");
+
   return (
     <div className="home-container">
       <header className="row menu-principal">
